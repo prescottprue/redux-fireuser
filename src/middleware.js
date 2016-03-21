@@ -1,11 +1,13 @@
 
 import { Schema, arrayOf, normalize } from 'normalizr'
 import { camelizeKeys } from 'humps'
+
 import { getFireuser } from './index'
-let fireuser = getFireuser()
+
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callFireuser (method, schema, callData) {
+  let fireuser = getFireuser()
   return fireuser[method](callData).then(response =>
     Object.assign({}, normalize(camelizeKeys(response), schema)),
     error => console.error('Error calling fireuser', error)

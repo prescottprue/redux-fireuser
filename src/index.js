@@ -2,8 +2,7 @@ import Middleware from './middleware'
 
 let fireuser
 
-export function createMiddleware(name) {
-  fireuser = new Fireuser(name)
+export function createMiddleware (name) {
   // Return middleware (which imports the new fireuser instance)
   return Middleware
 }
